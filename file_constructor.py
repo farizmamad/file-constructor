@@ -18,36 +18,19 @@ class FileConstructor:
 
 
 if __name__ == "__main__":
-    source = "packages_from_pergiumrohcom.json"
-    final = "product_search.json"
+    source = "put_the_source_file_name_here"
+    final = "put_the_final_file_name_here"
 
     with FileConstructor(source, final, "w") as construct:
-        data_to_be_written = {
-            "title": [],
-            "tagline": [],
-            "date": [],
-            "transportations": [],
-            "accommodations": [],
-            "tags": [],
-            "price": [],
-            "slashPrice": [],
-            "packageName": []
-        }
+        data_to_be_written = "any_format_of_data_you_want_to_write_to_final_file"
 
         temp_data = data_to_be_written.copy()
-        for source in json.loads(construct["file_source"].read()):
-            temp_data["title"].append(source["name"])
-            # temp_data["tagline"].append(source["name"])
-            temp_data["date"].append(source["departure_date"])
-            # temp_data["transportations"].append(source["name"])
-            # temp_data["accommodations"].append(source["name"])
-            # temp_data["tags"].append(source["name"])
-            temp_data["price"].append(source["original_price"])
-            temp_data["slashPrice"].append(source["reduced_price"])
-            temp_data["packageName"].append(source["rooms"][0]["type"])
+        """
+            Put your function to process data here, from source format to final format.
+            Utilize temp_data, construct["file_source"], construce["file_final"] if necessary.
+            Use read or write method in utilizing the data.
+        """
         data_to_be_written = temp_data.copy()
-        print(data_to_be_written)
 
         data_to_be_written = json.dumps(data_to_be_written)
-        print(type(data_to_be_written))
         construct["file_final"].write(data_to_be_written)
